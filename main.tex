@@ -1,0 +1,98 @@
+%++++++++++++++++++++++++++++++++++++++++
+% Main LaTeX template for a PhD Thesis
+% Designed and developed by Denish Azamuke
+%++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++
+%This template can be modified, in any way based on recommendations from thesis supervisors of the graduate student
+%++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[12pt, twoside]{report} % Use the report class with 12pt font 
+\usepackage[utf8]{inputenc} % Character encoding
+\usepackage{hyperref} % For hyperlinks
+\usepackage{geometry} % For margin settings
+\usepackage{textcomp}  % Include this package to use \textcopyright
+\usepackage{graphicx} % For handling images
+\usepackage{cite} % For citations
+\usepackage{amsmath,amssymb,amsfonts} % For math fonts, symbols and environments
+\usepackage{algorithmic} % For algorithms
+\usepackage{fancyhdr} % For fancy headers
+\usepackage{nomencl} % For the nomenclature
+\usepackage{appendix} % For appendices
+\usepackage{tocloft} % For table of contents customization
+\geometry{a4paper, margin=1in} % Set margins
+\hypersetup{ % Setup hyperlinks
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    pdftitle={PhD Thesis},
+    pdfauthor={Author Name}
+}
+
+\makenomenclature
+\renewcommand{\nomname}{List of Abbreviations}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+
+\renewcommand{\bibname}{References}  % For book, report, and thesis classes
+
+
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{rotating}  % Enables sidewaystable environment
+
+%For subfigures
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\begin{document}
+
+% Title Page
+\input{titlepage.tex}
+
+\pagenumbering{roman} % Use roman numerals for front matter
+
+% Declaration
+\input{declaration.tex}
+% Approval
+\input{approval}
+% Dedication
+\input{dedication}
+% Acknowledgements
+\input{acknowledgements.tex}
+% Abstract
+\input{abstract.tex}
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\input{acronyms}
+\cleardoublepage
+\pagenumbering{arabic} % Use arabic numerals for main content
+
+% Include chapters
+\input{chapters/introduction.tex}
+\input{chapters/literature_review.tex}
+\input{chapters/methodology.tex}
+\input{chapters/results_and_discussion.tex}
+\input{chapters/another_chapter}
+\input{chapters/conclusion.tex}
+\newpage
+% References
+\addcontentsline{toc}{chapter}{References}  
+\bibliographystyle{IEEEtran}
+\bibliography{references.bib}
+
+% Appendices
+\begin{appendix}
+    \input{appendices/appendixA.tex}
+    \input{appendices/appendixB.tex}
+\end{appendix}
+\end{document}
